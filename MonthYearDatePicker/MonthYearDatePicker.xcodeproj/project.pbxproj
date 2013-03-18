@@ -24,6 +24,7 @@
 		780814FF16F6F20A00002B9B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780814D716F6F20900002B9B /* Foundation.framework */; };
 		7808150716F6F20A00002B9B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7808150516F6F20A00002B9B /* InfoPlist.strings */; };
 		7808150A16F6F20A00002B9B /* MonthYearDatePickerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7808150916F6F20A00002B9B /* MonthYearDatePickerTests.m */; };
+		7808151616F6F33B00002B9B /* CDatePickerViewEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 7808151516F6F33B00002B9B /* CDatePickerViewEx.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		7808150616F6F20A00002B9B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		7808150816F6F20A00002B9B /* MonthYearDatePickerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonthYearDatePickerTests.h; sourceTree = "<group>"; };
 		7808150916F6F20A00002B9B /* MonthYearDatePickerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonthYearDatePickerTests.m; sourceTree = "<group>"; };
+		7808151416F6F33B00002B9B /* CDatePickerViewEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDatePickerViewEx.h; sourceTree = "<group>"; };
+		7808151516F6F33B00002B9B /* CDatePickerViewEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDatePickerViewEx.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +122,7 @@
 		780814DB16F6F20900002B9B /* MonthYearDatePicker */ = {
 			isa = PBXGroup;
 			children = (
+				7808151316F6F31A00002B9B /* CDatePickerViewEx */,
 				780814E416F6F20900002B9B /* AppDelegate.h */,
 				780814E516F6F20900002B9B /* AppDelegate.m */,
 				780814ED16F6F20A00002B9B /* ViewController.h */,
@@ -161,6 +165,15 @@
 				7808150516F6F20A00002B9B /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7808151316F6F31A00002B9B /* CDatePickerViewEx */ = {
+			isa = PBXGroup;
+			children = (
+				7808151416F6F33B00002B9B /* CDatePickerViewEx.h */,
+				7808151516F6F33B00002B9B /* CDatePickerViewEx.m */,
+			);
+			name = CDatePickerViewEx;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,6 +290,7 @@
 				780814E216F6F20900002B9B /* main.m in Sources */,
 				780814E616F6F20900002B9B /* AppDelegate.m in Sources */,
 				780814EF16F6F20A00002B9B /* ViewController.m in Sources */,
+				7808151616F6F33B00002B9B /* CDatePickerViewEx.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
