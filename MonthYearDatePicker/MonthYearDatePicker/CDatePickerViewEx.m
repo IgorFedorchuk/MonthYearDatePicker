@@ -192,8 +192,7 @@ const NSInteger numberOfComponents = 2;
 
 -(NSArray *)nameOfMonths
 {
-    NSDateFormatter *dateFormatter = [NSDateFormatter new];
-    return [dateFormatter standaloneMonthSymbols];
+    return @[@"January", @"February", @"March", @"April", @"May", @"June", @"July", @"August", @"September", @"October", @"November", @"December"];
 }
 
 -(NSArray *)nameOfYears
@@ -254,6 +253,8 @@ const NSInteger numberOfComponents = 2;
 -(NSString *)currentMonthName
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    [formatter setLocale:usLocale];
     [formatter setDateFormat:@"MMMM"];
     return [formatter stringFromDate:[NSDate date]];
 }

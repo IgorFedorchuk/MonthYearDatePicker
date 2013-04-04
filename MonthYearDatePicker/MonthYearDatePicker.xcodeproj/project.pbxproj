@@ -483,6 +483,7 @@
 				7808150F16F6F20A00002B9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7808151016F6F20A00002B9B /* Build configuration list for PBXNativeTarget "MonthYearDatePickerTests" */ = {
 			isa = XCConfigurationList;
@@ -491,6 +492,7 @@
 				7808151216F6F20A00002B9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
