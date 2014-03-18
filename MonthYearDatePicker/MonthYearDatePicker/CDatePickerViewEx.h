@@ -9,6 +9,7 @@
 @interface CDatePickerViewEx : UIPickerView <UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (nonatomic, strong, readonly) NSDate *date;
+
 -(void)selectToday;
 
 @end

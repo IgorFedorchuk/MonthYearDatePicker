@@ -8,7 +8,6 @@
 
 #import "CDatePickerViewEx.h"
 
-
 // Identifiers of components
 #define MONTH ( 0 )
 #define YEAR ( 1 )
@@ -24,21 +23,7 @@
 @property (nonatomic, strong) NSArray *months;
 @property (nonatomic, strong) NSArray *years;
 
--(NSArray *)nameOfYears;
--(NSArray *)nameOfMonths;
--(CGFloat)componentWidth;
-
--(UILabel *)labelForComponent:(NSInteger)component selected:(BOOL)selected;
--(NSString *)titleForRow:(NSInteger)row forComponent:(NSInteger)component;
--(NSIndexPath *)todayPath;
--(NSInteger)bigRowMonthCount;
--(NSInteger)bigRowYearCount;
--(NSString *)currentMonthName;
--(NSString *)currentYearName;
-
 @end
-
-
 
 @implementation CDatePickerViewEx
 
@@ -80,6 +65,7 @@ const NSInteger numberOfComponents = 2;
 }
 
 #pragma mark - UIPickerViewDelegate
+
 -(CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component
 {
     return [self componentWidth];
@@ -133,6 +119,7 @@ const NSInteger numberOfComponents = 2;
 }
 
 #pragma mark - UIPickerViewDataSource
+
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
     return numberOfComponents;
@@ -148,6 +135,7 @@ const NSInteger numberOfComponents = 2;
 }
 
 #pragma mark - Util
+
 -(NSInteger)bigRowMonthCount
 {
     return [self.months count]  * bigRowCount;
@@ -176,13 +164,13 @@ const NSInteger numberOfComponents = 2;
 
 -(UILabel *)labelForComponent:(NSInteger)component selected:(BOOL)selected
 {
-    CGRect frame = CGRectMake(0.f, 0.f, [self componentWidth],rowHeight);
+    CGRect frame = CGRectMake(0, 0, [self componentWidth],rowHeight);
     
     UILabel *label = [[UILabel alloc] initWithFrame:frame];
     label.textAlignment = UITextAlignmentCenter;
     label.backgroundColor = [UIColor clearColor];
     label.textColor = selected ? [UIColor blueColor] : [UIColor blackColor];
-    label.font = [UIFont boldSystemFontOfSize:18.f];
+    label.font = [UIFont boldSystemFontOfSize:18];
     label.userInteractionEnabled = NO;
     
     label.tag = LABEL_TAG;
@@ -252,7 +240,7 @@ const NSInteger numberOfComponents = 2;
 
 -(NSString *)currentMonthName
 {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSDateFormatter *formatter = [NSDateFormatter new];
     NSLocale *usLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
     [formatter setLocale:usLocale];
     [formatter setDateFormat:@"MMMM"];
@@ -261,7 +249,7 @@ const NSInteger numberOfComponents = 2;
 
 -(NSString *)currentYearName
 {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSDateFormatter *formatter = [NSDateFormatter new];
     [formatter setDateFormat:@"yyyy"];
     return [formatter stringFromDate:[NSDate date]];
 }
