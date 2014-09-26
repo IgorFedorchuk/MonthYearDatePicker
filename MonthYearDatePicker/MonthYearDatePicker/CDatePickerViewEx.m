@@ -189,7 +189,7 @@ const NSInteger numberOfComponents = 2;
     
     for(NSInteger year = minYear; year <= maxYear; year++)
     {
-        NSString *yearStr = [NSString stringWithFormat:@"%i", year];
+        NSString *yearStr = [NSString stringWithFormat:@"%li", (long)year];
         [years addObject:yearStr];
     }
     return years;

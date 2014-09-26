@@ -19,23 +19,8 @@
 		780814EF16F6F20A00002B9B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 780814EE16F6F20A00002B9B /* ViewController.m */; };
 		780814F216F6F20A00002B9B /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 780814F016F6F20A00002B9B /* ViewController_iPhone.xib */; };
 		780814F516F6F20A00002B9B /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 780814F316F6F20A00002B9B /* ViewController_iPad.xib */; };
-		780814FD16F6F20A00002B9B /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780814FC16F6F20A00002B9B /* SenTestingKit.framework */; };
-		780814FE16F6F20A00002B9B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780814D516F6F20900002B9B /* UIKit.framework */; };
-		780814FF16F6F20A00002B9B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780814D716F6F20900002B9B /* Foundation.framework */; };
-		7808150716F6F20A00002B9B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7808150516F6F20A00002B9B /* InfoPlist.strings */; };
-		7808150A16F6F20A00002B9B /* MonthYearDatePickerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7808150916F6F20A00002B9B /* MonthYearDatePickerTests.m */; };
 		7808151616F6F33B00002B9B /* CDatePickerViewEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 7808151516F6F33B00002B9B /* CDatePickerViewEx.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		7808150016F6F20A00002B9B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 780814CA16F6F20900002B9B /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 780814D116F6F20900002B9B;
-			remoteInfo = MonthYearDatePicker;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		780814D216F6F20900002B9B /* MonthYearDatePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonthYearDatePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,12 +40,7 @@
 		780814EE16F6F20A00002B9B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		780814F116F6F20A00002B9B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
 		780814F416F6F20A00002B9B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
-		780814FB16F6F20A00002B9B /* MonthYearDatePickerTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MonthYearDatePickerTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		780814FC16F6F20A00002B9B /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		7808150416F6F20A00002B9B /* MonthYearDatePickerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MonthYearDatePickerTests-Info.plist"; sourceTree = "<group>"; };
-		7808150616F6F20A00002B9B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		7808150816F6F20A00002B9B /* MonthYearDatePickerTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MonthYearDatePickerTests.h; sourceTree = "<group>"; };
-		7808150916F6F20A00002B9B /* MonthYearDatePickerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MonthYearDatePickerTests.m; sourceTree = "<group>"; };
 		7808151416F6F33B00002B9B /* CDatePickerViewEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDatePickerViewEx.h; sourceTree = "<group>"; };
 		7808151516F6F33B00002B9B /* CDatePickerViewEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDatePickerViewEx.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,16 +56,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		780814F716F6F20A00002B9B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				780814FD16F6F20A00002B9B /* SenTestingKit.framework in Frameworks */,
-				780814FE16F6F20A00002B9B /* UIKit.framework in Frameworks */,
-				780814FF16F6F20A00002B9B /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -93,7 +63,6 @@
 			isa = PBXGroup;
 			children = (
 				780814DB16F6F20900002B9B /* MonthYearDatePicker */,
-				7808150216F6F20A00002B9B /* MonthYearDatePickerTests */,
 				780814D416F6F20900002B9B /* Frameworks */,
 				780814D316F6F20900002B9B /* Products */,
 			);
@@ -103,7 +72,6 @@
 			isa = PBXGroup;
 			children = (
 				780814D216F6F20900002B9B /* MonthYearDatePicker.app */,
-				780814FB16F6F20A00002B9B /* MonthYearDatePickerTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -148,25 +116,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		7808150216F6F20A00002B9B /* MonthYearDatePickerTests */ = {
-			isa = PBXGroup;
-			children = (
-				7808150816F6F20A00002B9B /* MonthYearDatePickerTests.h */,
-				7808150916F6F20A00002B9B /* MonthYearDatePickerTests.m */,
-				7808150316F6F20A00002B9B /* Supporting Files */,
-			);
-			path = MonthYearDatePickerTests;
-			sourceTree = "<group>";
-		};
-		7808150316F6F20A00002B9B /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				7808150416F6F20A00002B9B /* MonthYearDatePickerTests-Info.plist */,
-				7808150516F6F20A00002B9B /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		7808151316F6F31A00002B9B /* CDatePickerViewEx */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,31 +145,13 @@
 			productReference = 780814D216F6F20900002B9B /* MonthYearDatePicker.app */;
 			productType = "com.apple.product-type.application";
 		};
-		780814FA16F6F20A00002B9B /* MonthYearDatePickerTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7808151016F6F20A00002B9B /* Build configuration list for PBXNativeTarget "MonthYearDatePickerTests" */;
-			buildPhases = (
-				780814F616F6F20A00002B9B /* Sources */,
-				780814F716F6F20A00002B9B /* Frameworks */,
-				780814F816F6F20A00002B9B /* Resources */,
-				780814F916F6F20A00002B9B /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				7808150116F6F20A00002B9B /* PBXTargetDependency */,
-			);
-			name = MonthYearDatePickerTests;
-			productName = MonthYearDatePickerTests;
-			productReference = 780814FB16F6F20A00002B9B /* MonthYearDatePickerTests.octest */;
-			productType = "com.apple.product-type.bundle";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		780814CA16F6F20900002B9B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastTestingUpgradeCheck = 0600;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = Igor;
 			};
@@ -237,7 +168,6 @@
 			projectRoot = "";
 			targets = (
 				780814D116F6F20900002B9B /* MonthYearDatePicker */,
-				780814FA16F6F20A00002B9B /* MonthYearDatePickerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -256,31 +186,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		780814F816F6F20A00002B9B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7808150716F6F20A00002B9B /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		780814F916F6F20A00002B9B /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		780814CE16F6F20900002B9B /* Sources */ = {
@@ -294,23 +200,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		780814F616F6F20A00002B9B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7808150A16F6F20A00002B9B /* MonthYearDatePickerTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		7808150116F6F20A00002B9B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 780814D116F6F20900002B9B /* MonthYearDatePicker */;
-			targetProxy = 7808150016F6F20A00002B9B /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		780814DE16F6F20900002B9B /* InfoPlist.strings */ = {
@@ -335,14 +225,6 @@
 				780814F416F6F20A00002B9B /* en */,
 			);
 			name = ViewController_iPad.xib;
-			sourceTree = "<group>";
-		};
-		7808150516F6F20A00002B9B /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7808150616F6F20A00002B9B /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -430,40 +312,6 @@
 			};
 			name = Release;
 		};
-		7808151116F6F20A00002B9B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MonthYearDatePicker.app/MonthYearDatePicker";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MonthYearDatePicker/MonthYearDatePicker-Prefix.pch";
-				INFOPLIST_FILE = "MonthYearDatePickerTests/MonthYearDatePickerTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		7808151216F6F20A00002B9B /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/MonthYearDatePicker.app/MonthYearDatePicker";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "MonthYearDatePicker/MonthYearDatePicker-Prefix.pch";
-				INFOPLIST_FILE = "MonthYearDatePickerTests/MonthYearDatePickerTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -481,15 +329,6 @@
 			buildConfigurations = (
 				7808150E16F6F20A00002B9B /* Debug */,
 				7808150F16F6F20A00002B9B /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7808151016F6F20A00002B9B /* Build configuration list for PBXNativeTarget "MonthYearDatePickerTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7808151116F6F20A00002B9B /* Debug */,
-				7808151216F6F20A00002B9B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
