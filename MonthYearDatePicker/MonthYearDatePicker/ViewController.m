@@ -12,6 +12,7 @@
 @interface ViewController ()
 
 @property (nonatomic, weak) IBOutlet CDatePickerViewEx *picker;
+@property (nonatomic, strong) CDatePickerViewEx *pickerFromCode;
 
 @end
 
@@ -22,6 +23,13 @@
     [super viewDidLoad];
     
     [self.picker selectToday];
+    
+    CGRect frame = self.picker.bounds;
+    frame.origin.y = self.picker.frame.size.height;
+    
+    self.pickerFromCode = [[CDatePickerViewEx alloc] initWithFrame:frame];
+    [self.view addSubview:self.pickerFromCode];
+    [self.pickerFromCode selectToday];
 }
 
 - (void)didReceiveMemoryWarning

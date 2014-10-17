@@ -33,6 +33,8 @@
 const NSInteger bigRowCount = 1000;
 const NSInteger numberOfComponents = 2;
 
+#pragma mark - Properties
+
 -(void)setMonthFont:(UIFont *)monthFont
 {
     if (monthFont)
@@ -65,32 +67,31 @@ const NSInteger numberOfComponents = 2;
     }
 }
 
+#pragma mark - Init
+
+-(instancetype)init
+{
+    if (self = [super init])
+    {
+        [self loadDefaultsParameters];
+    }
+    return self;
+}
+
+-(instancetype)initWithFrame:(CGRect)frame
+{
+    if (self = [super initWithFrame:frame])
+    {
+        [self loadDefaultsParameters];
+    }
+    return self;
+}
+
 -(void)awakeFromNib
 {
     [super awakeFromNib];
     
-    self.minYear = 2008;
-    self.maxYear = 2030;
-    self.rowHeight = 44;
-    
-    self.months = [self nameOfMonths];
-    self.years = [self nameOfYears];
-    self.todayIndexPath = [self todayPath];
-    
-    self.delegate = self;
-    self.dataSource = self;
-    
-    self.monthSelectedTextColor = [UIColor blueColor];
-    self.monthTextColor = [UIColor blackColor];
-    
-    self.yearSelectedTextColor = [UIColor blueColor];
-    self.yearTextColor = [UIColor blackColor];
-    
-    self.monthSelectedFont = [UIFont boldSystemFontOfSize:17];
-    self.monthFont = [UIFont boldSystemFontOfSize:17];
-   
-    self.yearSelectedFont = [UIFont boldSystemFontOfSize:17];
-    self.yearFont = [UIFont boldSystemFontOfSize:17];
+    [self loadDefaultsParameters];
 }
 
 #pragma mark - Open methods
@@ -347,6 +348,32 @@ const NSInteger numberOfComponents = 2;
         return self.monthFont;
     }
     return self.yearFont;
+}
+
+-(void)loadDefaultsParameters
+{
+    self.minYear = 2008;
+    self.maxYear = 2030;
+    self.rowHeight = 44;
+    
+    self.months = [self nameOfMonths];
+    self.years = [self nameOfYears];
+    self.todayIndexPath = [self todayPath];
+    
+    self.delegate = self;
+    self.dataSource = self;
+    
+    self.monthSelectedTextColor = [UIColor blueColor];
+    self.monthTextColor = [UIColor blackColor];
+    
+    self.yearSelectedTextColor = [UIColor blueColor];
+    self.yearTextColor = [UIColor blackColor];
+    
+    self.monthSelectedFont = [UIFont boldSystemFontOfSize:17];
+    self.monthFont = [UIFont boldSystemFontOfSize:17];
+    
+    self.yearSelectedFont = [UIFont boldSystemFontOfSize:17];
+    self.yearFont = [UIFont boldSystemFontOfSize:17];
 }
 
 @end

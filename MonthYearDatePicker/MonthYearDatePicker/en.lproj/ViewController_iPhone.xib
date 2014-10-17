@@ -38,7 +38,7 @@
 					<object class="IBUIPickerView" id="173696992">
 						<reference key="NSNextResponder" ref="774585933"/>
 						<int key="NSvFlags">290</int>
-						<string key="NSFrame">{{0, 70}, {320, 216}}</string>
+						<string key="NSFrameSize">{320, 216}</string>
 						<reference key="NSSuperview" ref="774585933"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
