@@ -44,8 +44,11 @@ const NSInteger numberOfComponents = 2;
     self.delegate = self;
     self.dataSource = self;
     
-    self.monthSelectedColor = [UIColor blueColor];
-    self.daySelectedColor = [UIColor blueColor];
+    self.monthSelectedTextColor = [UIColor blueColor];
+    self.monthTextColor = [UIColor blackColor];
+    
+    self.yearSelectedTextColor = [UIColor blueColor];
+    self.yearTextColor = [UIColor blackColor];
 }
 
 -(NSDate *)date
@@ -105,7 +108,7 @@ const NSInteger numberOfComponents = 2;
         returnView = [self labelForComponent:component];
     }
     
-    returnView.textColor = selected ? [self selectedColorForComponent:component] : [UIColor blackColor];
+    returnView.textColor = selected ? [self selectedColorForComponent:component] : [self colorForComponent:component];
     returnView.text = [self titleForRow:row forComponent:component];
     return returnView;
 }
@@ -254,9 +257,18 @@ const NSInteger numberOfComponents = 2;
 {
     if (component == 0)
     {
-        return self.monthSelectedColor;
+        return self.monthSelectedTextColor;
     }
-    return self.daySelectedColor;
+    return self.yearSelectedTextColor;
+}
+
+- (UIColor *)colorForComponent:(NSInteger)component
+{
+    if (component == 0)
+    {
+        return self.monthTextColor;
+    }
+    return self.yearTextColor;
 }
 
 @end
