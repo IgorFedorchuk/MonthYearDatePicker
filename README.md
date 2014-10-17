@@ -1,6 +1,9 @@
 MonthYearDatePicker
 ===================
 
+Screenshot:
+![alt tag](https://github.com/IgorFedorchuk/MonthYearDatePicker/blob/master/Screenshot.png)
+
 UIDatePicker select Month and Year
 
 =====================
