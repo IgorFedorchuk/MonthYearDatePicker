@@ -1,10 +1,10 @@
 MonthYearDatePicker
 ===================
 
-Screenshot:
 ![alt tag](https://github.com/IgorFedorchuk/MonthYearDatePicker/blob/master/Screenshot.png)
 
-UIDatePicker select Month and Year
+
+It is a sublcass of UIDatePicker. You can display month and year using native iOS control. Use -(void)selectToday method to setup picker to current day. Use control from xib or create it from code.
 
 =====================
 
