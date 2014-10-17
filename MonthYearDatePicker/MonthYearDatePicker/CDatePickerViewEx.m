@@ -33,10 +33,6 @@ const NSInteger maxYear = 2030;
 const CGFloat rowHeight = 44.f;
 const NSInteger numberOfComponents = 2;
 
-@synthesize todayIndexPath;
-@synthesize months;
-@synthesize years = _years;
-
 -(void)awakeFromNib
 {
     [super awakeFromNib];
@@ -48,7 +44,8 @@ const NSInteger numberOfComponents = 2;
     self.delegate = self;
     self.dataSource = self;
     
-    [self selectToday];
+    self.monthSelectedColor = [UIColor blueColor];
+    self.daySelectedColor = [UIColor blueColor];
 }
 
 -(NSDate *)date
@@ -105,10 +102,10 @@ const NSInteger numberOfComponents = 2;
     }
     else
     {
-        returnView = [self labelForComponent: component selected: selected];
+        returnView = [self labelForComponent:component];
     }
     
-    returnView.textColor = selected ? [UIColor blueColor] : [UIColor blackColor];
+    returnView.textColor = selected ? [self selectedColorForComponent:component] : [UIColor blackColor];
     returnView.text = [self titleForRow:row forComponent:component];
     return returnView;
 }
@@ -162,14 +159,13 @@ const NSInteger numberOfComponents = 2;
     return [self.years objectAtIndex:(row % yearCount)];
 }
 
--(UILabel *)labelForComponent:(NSInteger)component selected:(BOOL)selected
+-(UILabel *)labelForComponent:(NSInteger)component
 {
     CGRect frame = CGRectMake(0, 0, [self componentWidth],rowHeight);
     
     UILabel *label = [[UILabel alloc] initWithFrame:frame];
     label.textAlignment = UITextAlignmentCenter;
     label.backgroundColor = [UIColor clearColor];
-    label.textColor = selected ? [UIColor blueColor] : [UIColor blackColor];
     label.font = [UIFont boldSystemFontOfSize:18];
     label.userInteractionEnabled = NO;
     
@@ -252,6 +248,15 @@ const NSInteger numberOfComponents = 2;
     NSDateFormatter *formatter = [NSDateFormatter new];
     [formatter setDateFormat:@"yyyy"];
     return [formatter stringFromDate:[NSDate date]];
+}
+
+- (UIColor *)selectedColorForComponent:(NSInteger)component
+{
+    if (component == 0)
+    {
+        return self.monthSelectedColor;
+    }
+    return self.daySelectedColor;
 }
 
 @end

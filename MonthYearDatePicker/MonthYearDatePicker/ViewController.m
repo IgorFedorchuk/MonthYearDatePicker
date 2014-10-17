@@ -7,8 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "CDatePickerViewEx.h"
 
 @interface ViewController ()
+
+@property (nonatomic, weak) IBOutlet CDatePickerViewEx *picker;
 
 @end
 
@@ -17,7 +20,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    [self.picker selectToday];
 }
 
 - (void)didReceiveMemoryWarning

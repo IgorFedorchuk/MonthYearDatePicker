@@ -8,6 +8,9 @@
 
 @interface CDatePickerViewEx : UIPickerView <UIPickerViewDelegate, UIPickerViewDataSource>
 
+@property (nonatomic, strong) UIColor *monthSelectedColor;
+@property (nonatomic, strong) UIColor *daySelectedColor;
+
 @property (nonatomic, strong, readonly) NSDate *date;
 
 -(void)selectToday;
