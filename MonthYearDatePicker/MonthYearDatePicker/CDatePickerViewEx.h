@@ -14,6 +14,12 @@
 @property (nonatomic, strong) UIColor *yearSelectedTextColor;
 @property (nonatomic, strong) UIColor *yearTextColor;
 
+@property (nonatomic, strong) UIFont *monthSelectedFont;
+@property (nonatomic, strong) UIFont *monthFont;
+
+@property (nonatomic, strong) UIFont *yearSelectedFont;
+@property (nonatomic, strong) UIFont *yearFont;
+
 @property (nonatomic, assign) NSInteger rowHeight;
 
 @property (nonatomic, strong, readonly) NSDate *date;
