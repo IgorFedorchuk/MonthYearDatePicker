@@ -31,7 +31,6 @@
 @implementation CDatePickerViewEx
 
 const NSInteger bigRowCount = 1000;
-const CGFloat rowHeight = 44.f;
 const NSInteger numberOfComponents = 2;
 
 -(void)awakeFromNib
@@ -40,6 +39,7 @@ const NSInteger numberOfComponents = 2;
     
     self.minYear = 2008;
     self.maxYear = 2030;
+    self.rowHeight = 44;
     
     self.months = [self nameOfMonths];
     self.years = [self nameOfYears];
@@ -65,7 +65,8 @@ const NSInteger numberOfComponents = 2;
     NSInteger yearCount = self.years.count;
     NSString *year = [self.years objectAtIndex:([self selectedRowInComponent:YEAR] % yearCount)];
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init]; [formatter setDateFormat:@"MMMM:yyyy"];
+    NSDateFormatter *formatter = [NSDateFormatter new];
+    [formatter setDateFormat:@"MMMM:yyyy"];
     NSDate *date = [formatter dateFromString:[NSString stringWithFormat:@"%@:%@", month, year]];
     return date;
 }
@@ -146,7 +147,7 @@ const NSInteger numberOfComponents = 2;
 
 -(CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component
 {
-    return rowHeight;
+    return self.rowHeight;
 }
 
 #pragma mark - UIPickerViewDataSource
@@ -195,7 +196,7 @@ const NSInteger numberOfComponents = 2;
 
 -(UILabel *)labelForComponent:(NSInteger)component
 {
-    CGRect frame = CGRectMake(0, 0, [self componentWidth],rowHeight);
+    CGRect frame = CGRectMake(0, 0, [self componentWidth], self.rowHeight);
     
     UILabel *label = [[UILabel alloc] initWithFrame:frame];
     label.textAlignment = UITextAlignmentCenter;

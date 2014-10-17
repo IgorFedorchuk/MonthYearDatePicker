@@ -14,6 +14,8 @@
 @property (nonatomic, strong) UIColor *yearSelectedTextColor;
 @property (nonatomic, strong) UIColor *yearTextColor;
 
+@property (nonatomic, assign) NSInteger rowHeight;
+
 @property (nonatomic, strong, readonly) NSDate *date;
 
 -(void)setupMinYear:(NSInteger)minYear maxYear:(NSInteger)maxYear;
