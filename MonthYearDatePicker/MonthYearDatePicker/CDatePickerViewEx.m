@@ -23,19 +23,23 @@
 @property (nonatomic, strong) NSArray *months;
 @property (nonatomic, strong) NSArray *years;
 
+@property (nonatomic, assign) NSInteger minYear;
+@property (nonatomic, assign) NSInteger maxYear;
+
 @end
 
 @implementation CDatePickerViewEx
 
 const NSInteger bigRowCount = 1000;
-const NSInteger minYear = 2008;
-const NSInteger maxYear = 2030;
 const CGFloat rowHeight = 44.f;
 const NSInteger numberOfComponents = 2;
 
 -(void)awakeFromNib
 {
     [super awakeFromNib];
+    
+    self.minYear = 2008;
+    self.maxYear = 2030;
     
     self.months = [self nameOfMonths];
     self.years = [self nameOfYears];
@@ -51,17 +55,47 @@ const NSInteger numberOfComponents = 2;
     self.yearTextColor = [UIColor blackColor];
 }
 
+#pragma mark - Open methods
+
 -(NSDate *)date
 {
-    NSInteger monthCount = [self.months count];
+    NSInteger monthCount = self.months.count;
     NSString *month = [self.months objectAtIndex:([self selectedRowInComponent:MONTH] % monthCount)];
     
-    NSInteger yearCount = [self.years count];
+    NSInteger yearCount = self.years.count;
     NSString *year = [self.years objectAtIndex:([self selectedRowInComponent:YEAR] % yearCount)];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init]; [formatter setDateFormat:@"MMMM:yyyy"];
     NSDate *date = [formatter dateFromString:[NSString stringWithFormat:@"%@:%@", month, year]];
     return date;
+}
+
+- (void)setupMinYear:(NSInteger)minYear maxYear:(NSInteger)maxYear
+{
+    self.minYear = minYear;
+    
+    if (maxYear > minYear)
+    {
+        self.maxYear = maxYear;
+    }
+    else
+    {
+        self.maxYear = minYear + 10;
+    }
+    
+    self.years = [self nameOfYears];
+    self.todayIndexPath = [self todayPath];
+}
+
+-(void)selectToday
+{
+    [self selectRow: self.todayIndexPath.row
+        inComponent: MONTH
+           animated: NO];
+    
+    [self selectRow: self.todayIndexPath.section
+        inComponent: YEAR
+           animated: NO];
 }
 
 #pragma mark - UIPickerViewDelegate
@@ -71,15 +105,12 @@ const NSInteger numberOfComponents = 2;
     return [self componentWidth];
 }
 
--(UIView *)pickerView: (UIPickerView *)pickerView
-           viewForRow: (NSInteger)row
-         forComponent: (NSInteger)component
-          reusingView: (UIView *)view
+-(UIView *)pickerView: (UIPickerView *)pickerView viewForRow: (NSInteger)row forComponent: (NSInteger)component reusingView: (UIView *)view
 {
     BOOL selected = NO;
     if(component == MONTH)
     {
-        NSInteger monthCount = [self.months count];
+        NSInteger monthCount = self.months.count;
         NSString *monthName = [self.months objectAtIndex:(row % monthCount)];
         NSString *currentMonthName = [self currentMonthName];
         if([monthName isEqualToString:currentMonthName] == YES)
@@ -89,7 +120,7 @@ const NSInteger numberOfComponents = 2;
     }
     else
     {
-        NSInteger yearCount = [self.years count];
+        NSInteger yearCount = self.years.count;
         NSString *yearName = [self.years objectAtIndex:(row % yearCount)];
         NSString *currenrYearName  = [self currentYearName];
         if([yearName isEqualToString:currenrYearName] == YES)
@@ -138,12 +169,12 @@ const NSInteger numberOfComponents = 2;
 
 -(NSInteger)bigRowMonthCount
 {
-    return [self.months count]  * bigRowCount;
+    return self.months.count  * bigRowCount;
 }
 
 -(NSInteger)bigRowYearCount
 {
-    return [self.years count]  * bigRowCount;
+    return self.years.count  * bigRowCount;
 }
 
 -(CGFloat)componentWidth
@@ -155,10 +186,10 @@ const NSInteger numberOfComponents = 2;
 {
     if(component == MONTH)
     {
-        NSInteger monthCount = [self.months count];
+        NSInteger monthCount = self.months.count;
         return [self.months objectAtIndex:(row % monthCount)];
     }
-    NSInteger yearCount = [self.years count];
+    NSInteger yearCount = self.years.count;
     return [self.years objectAtIndex:(row % yearCount)];
 }
 
@@ -186,23 +217,12 @@ const NSInteger numberOfComponents = 2;
 {
     NSMutableArray *years = [NSMutableArray array];
     
-    for(NSInteger year = minYear; year <= maxYear; year++)
+    for(NSInteger year = self.minYear; year <= self.maxYear; year++)
     {
         NSString *yearStr = [NSString stringWithFormat:@"%li", (long)year];
         [years addObject:yearStr];
     }
     return years;
-}
-
--(void)selectToday
-{
-    [self selectRow: self.todayIndexPath.row
-        inComponent: MONTH
-           animated: NO];
-    
-    [self selectRow: self.todayIndexPath.section
-        inComponent: YEAR
-           animated: NO];
 }
 
 -(NSIndexPath *)todayPath // row - month ; section - year

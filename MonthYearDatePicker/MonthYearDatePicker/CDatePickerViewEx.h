@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong, readonly) NSDate *date;
 
+-(void)setupMinYear:(NSInteger)minYear maxYear:(NSInteger)maxYear;
 -(void)selectToday;
 
 @end
