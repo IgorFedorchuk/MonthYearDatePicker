@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		77C868C31CB382D800CBF00B /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C868C21CB382D800CBF00B /* DatePickerView.swift */; };
 		780814D616F6F20900002B9B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780814D516F6F20900002B9B /* UIKit.framework */; };
 		780814D816F6F20900002B9B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780814D716F6F20900002B9B /* Foundation.framework */; };
 		780814DA16F6F20900002B9B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780814D916F6F20900002B9B /* CoreGraphics.framework */; };
@@ -23,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		77C868C11CB382D800CBF00B /* MonthYearDatePicker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MonthYearDatePicker-Bridging-Header.h"; sourceTree = "<group>"; };
+		77C868C21CB382D800CBF00B /* DatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		780814D216F6F20900002B9B /* MonthYearDatePicker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MonthYearDatePicker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		780814D516F6F20900002B9B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		780814D716F6F20900002B9B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -121,6 +124,8 @@
 			children = (
 				7808151416F6F33B00002B9B /* CDatePickerViewEx.h */,
 				7808151516F6F33B00002B9B /* CDatePickerViewEx.m */,
+				77C868C21CB382D800CBF00B /* DatePickerView.swift */,
+				77C868C11CB382D800CBF00B /* MonthYearDatePicker-Bridging-Header.h */,
 			);
 			name = CDatePickerViewEx;
 			sourceTree = "<group>";
@@ -151,6 +156,7 @@
 		780814CA16F6F20900002B9B /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0730;
 				LastTestingUpgradeCheck = 0600;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Igor;
@@ -194,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				780814E216F6F20900002B9B /* main.m in Sources */,
+				77C868C31CB382D800CBF00B /* DatePickerView.swift in Sources */,
 				780814E616F6F20900002B9B /* AppDelegate.m in Sources */,
 				780814EF16F6F20A00002B9B /* ViewController.m in Sources */,
 				7808151616F6F33B00002B9B /* CDatePickerViewEx.m in Sources */,
@@ -292,12 +299,16 @@
 		7808150E16F6F20A00002B9B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MonthYearDatePicker/MonthYearDatePicker-Prefix.pch";
 				INFOPLIST_FILE = "MonthYearDatePicker/MonthYearDatePicker-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "MonthYearDatePicker.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MonthYearDatePicker/MonthYearDatePicker-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -305,12 +316,15 @@
 		7808150F16F6F20A00002B9B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MonthYearDatePicker/MonthYearDatePicker-Prefix.pch";
 				INFOPLIST_FILE = "MonthYearDatePicker/MonthYearDatePicker-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "MonthYearDatePicker.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MonthYearDatePicker/MonthYearDatePicker-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
