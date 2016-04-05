@@ -19,8 +19,12 @@ class ViewController: UIViewController
 
         picker.minYear = 2000
         picker.maxYear = 2020
-
+        picker.rowHeight = 60
+        
         picker.selectToday()
+        picker.selectRow(50, inComponent: 1, animated: false)
+        picker.selectRow(500, inComponent: 0, animated: false)
+        picker.date
         
         var frame = picker.bounds
         frame.origin.y = picker.frame.size.height

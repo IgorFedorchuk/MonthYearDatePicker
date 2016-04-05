@@ -44,12 +44,12 @@ class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
         return label
     }
 
-    private var months : Array<String>
+    var months : Array<String>
     {
         return [NSLocalizedString("January", comment: ""), NSLocalizedString("February", comment: ""), NSLocalizedString("March", comment: ""), NSLocalizedString("April", comment: ""), NSLocalizedString("May", comment: ""), NSLocalizedString("June", comment: ""), NSLocalizedString("July", comment: ""), NSLocalizedString("August", comment: ""), NSLocalizedString("September", comment: ""), NSLocalizedString("October", comment: ""), NSLocalizedString("November", comment: ""), NSLocalizedString("December", comment: "")]
     }
     
-    private var years : Array<String>
+    var years : Array<String>
     {
         let years = [Int](minYear...maxYear)
         var names = [String]()
@@ -60,7 +60,7 @@ class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
         return names
     }
     
-    private var currentMonthName : String
+    var currentMonthName : String
     {
         formatter.locale = NSLocale.init(localeIdentifier: "en_US")
         formatter.dateFormat = "MMMM"
@@ -68,7 +68,7 @@ class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
         return NSLocalizedString(dateString, comment: "")
     }
 
-    private var currentYearName : String
+    var currentYearName : String
     {
         formatter.locale = NSLocale.init(localeIdentifier: "en_US")
         formatter.dateFormat = "yyyy"
@@ -117,6 +117,17 @@ class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
             }
         }
         return NSIndexPath.init(forRow: row, inSection: section)
+    }
+    
+    var date : NSDate
+    {
+        let month = months[selectedRowInComponent(DatePickerComponent.Month.rawValue) % months.count]
+        let year = years[selectedRowInComponent(DatePickerComponent.Year.rawValue) % years.count]
+        
+        let formatter = NSDateFormatter.init()
+        formatter.dateFormat = "MMMM:yyyy"
+        let date = formatter.dateFromString("\(month):\(year)")
+        return date!
     }
     
     //MARK: - Override
