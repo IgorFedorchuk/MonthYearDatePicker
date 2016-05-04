@@ -17,7 +17,10 @@ class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
 {
     private let bigRowCount = 1000
     private let componentsCount = 2
-
+    var minYear = 2008
+    var maxYear = 2031
+    var rowHeight : CGFloat = 44
+    
     var monthFont = UIFont.boldSystemFontOfSize(17)
     var monthSelectedFont = UIFont.boldSystemFontOfSize(17)
     
@@ -29,11 +32,7 @@ class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
     
     var yearTextColor = UIColor.blackColor()
     var yearSelectedTextColor = UIColor.blueColor()
-    
-    var minYear = 2008
-    var maxYear = 2031
-    var rowHeight : CGFloat = 44
-    
+        
     private let formatter = NSDateFormatter.init()
 
     private var rowLabel : UILabel
