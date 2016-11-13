@@ -10,36 +10,36 @@ import UIKit
 
 enum DatePickerComponent : Int
 {
-    case Month, Year
+    case month, year
 }
 
 class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
 {
-    private let bigRowCount = 1000
-    private let componentsCount = 2
+    fileprivate let bigRowCount = 1000
+    fileprivate let componentsCount = 2
     var minYear = 2008
     var maxYear = 2031
     var rowHeight : CGFloat = 44
     
-    var monthFont = UIFont.boldSystemFontOfSize(17)
-    var monthSelectedFont = UIFont.boldSystemFontOfSize(17)
+    var monthFont = UIFont.boldSystemFont(ofSize: 17)
+    var monthSelectedFont = UIFont.boldSystemFont(ofSize: 17)
     
-    var yearFont = UIFont.boldSystemFontOfSize(17)
-    var yearSelectedFont = UIFont.boldSystemFontOfSize(17)
+    var yearFont = UIFont.boldSystemFont(ofSize: 17)
+    var yearSelectedFont = UIFont.boldSystemFont(ofSize: 17)
 
-    var monthTextColor = UIColor.blackColor()
-    var monthSelectedTextColor = UIColor.blueColor()
+    var monthTextColor = UIColor.black
+    var monthSelectedTextColor = UIColor.blue
     
-    var yearTextColor = UIColor.blackColor()
-    var yearSelectedTextColor = UIColor.blueColor()
+    var yearTextColor = UIColor.black
+    var yearSelectedTextColor = UIColor.blue
         
-    private let formatter = NSDateFormatter.init()
+    fileprivate let formatter = DateFormatter.init()
 
-    private var rowLabel : UILabel
+    fileprivate var rowLabel : UILabel
     {
-        let label = UILabel.init(frame: CGRectMake(0, 0, componentWidth, rowHeight))
-        label.textAlignment = .Center
-        label.backgroundColor = UIColor.clearColor()
+        let label = UILabel.init(frame: CGRect(x: 0, y: 0, width: componentWidth, height: rowHeight))
+        label.textAlignment = .center
+        label.backgroundColor = UIColor.clear
         return label
     }
 
@@ -61,35 +61,35 @@ class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
     
     var currentMonthName : String
     {
-        formatter.locale = NSLocale.init(localeIdentifier: "en_US")
+        formatter.locale = Locale.init(identifier: "en_US")
         formatter.dateFormat = "MMMM"
-        let dateString = formatter.stringFromDate(NSDate.init())
+        let dateString = formatter.string(from: Date.init())
         return NSLocalizedString(dateString, comment: "")
     }
 
     var currentYearName : String
     {
-        formatter.locale = NSLocale.init(localeIdentifier: "en_US")
+        formatter.locale = Locale.init(identifier: "en_US")
         formatter.dateFormat = "yyyy"
-        return formatter.stringFromDate(NSDate.init())
+        return formatter.string(from: Date.init())
     }
     
-    private var bigRowMonthCount : Int
+    fileprivate var bigRowMonthCount : Int
     {
         return months.count  * bigRowCount
     }
  
-    private var bigRowYearCount : Int
+    fileprivate var bigRowYearCount : Int
     {
         return years.count  * bigRowCount
     }
     
-    private var componentWidth : CGFloat
+    fileprivate var componentWidth : CGFloat
     {
         return self.bounds.size.width / CGFloat(componentsCount)
     }
     
-    private var todayIndexPath : NSIndexPath
+    fileprivate var todayIndexPath : IndexPath
     {
         var row = 0
         var section = 0
@@ -100,7 +100,7 @@ class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
         {
             if month == currentMonthName
             {
-                row = months.indexOf(month)!
+                row = months.index(of: month)!
                 row += bigRowMonthCount / 2
                 break;
             }
@@ -110,22 +110,22 @@ class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
         {
             if year == currentYearName
             {
-                section = years.indexOf(year)!
+                section = years.index(of: year)!
                 section += bigRowYearCount / 2
                 break;
             }
         }
-        return NSIndexPath.init(forRow: row, inSection: section)
+        return IndexPath.init(row: row, section: section)
     }
     
-    var date : NSDate
+    var date : Date
     {
-        let month = months[selectedRowInComponent(DatePickerComponent.Month.rawValue) % months.count]
-        let year = years[selectedRowInComponent(DatePickerComponent.Year.rawValue) % years.count]
+        let month = months[selectedRow(inComponent: DatePickerComponent.month.rawValue) % months.count]
+        let year = years[selectedRow(inComponent: DatePickerComponent.year.rawValue) % years.count]
         
-        let formatter = NSDateFormatter.init()
+        let formatter = DateFormatter.init()
         formatter.dateFormat = "MMMM:yyyy"
-        let date = formatter.dateFromString("\(month):\(year)")
+        let date = formatter.date(from: "\(month):\(year)")
         return date!
     }
     
@@ -153,18 +153,18 @@ class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
 
     func selectToday()
     {
-        selectRow(todayIndexPath.row, inComponent: DatePickerComponent.Month.rawValue, animated: false)
-        selectRow(todayIndexPath.section, inComponent: DatePickerComponent.Year.rawValue, animated: false)
+        selectRow((todayIndexPath as NSIndexPath).row, inComponent: DatePickerComponent.month.rawValue, animated: false)
+        selectRow((todayIndexPath as NSIndexPath).section, inComponent: DatePickerComponent.year.rawValue, animated: false)
     }
     
     //MARK: - UIPickerViewDelegate
     
-    func pickerView(pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat
+    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat
     {
         return componentWidth
     }
     
-    func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView
     {
         let label : UILabel
         if view is UILabel
@@ -183,21 +183,21 @@ class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
         return label
     }
     
-    func pickerView(pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat
     {
         return rowHeight
     }
     
     //MARK: - UIPickerViewDataSource
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int
+    func numberOfComponents(in pickerView: UIPickerView) -> Int
     {
         return componentsCount
     }
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
     {
-        if component == DatePickerComponent.Month.rawValue
+        if component == DatePickerComponent.month.rawValue
         {
             return bigRowMonthCount
         }
@@ -206,16 +206,16 @@ class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
     
     //MARK: - Private
     
-    private func loadDefaultsParameters()
+    fileprivate func loadDefaultsParameters()
     {
         delegate = self
         dataSource = self
     }
     
-    private func isSelectedRow(row : Int, component : Int) -> Bool
+    fileprivate func isSelectedRow(_ row : Int, component : Int) -> Bool
     {
         var selected = false
-        if component == DatePickerComponent.Month.rawValue
+        if component == DatePickerComponent.month.rawValue
         {
             let name = months[row % months.count]
             if name == currentMonthName
@@ -235,45 +235,45 @@ class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
         return selected
     }
     
-    private func selectedColorForComponent(component : Int) -> UIColor
+    fileprivate func selectedColorForComponent(_ component : Int) -> UIColor
     {
-        if component == DatePickerComponent.Month.rawValue
+        if component == DatePickerComponent.month.rawValue
         {
             return monthSelectedTextColor
         }
         return yearSelectedTextColor
     }
     
-    private func colorForComponent(component : Int) -> UIColor
+    fileprivate func colorForComponent(_ component : Int) -> UIColor
     {
-        if component == DatePickerComponent.Month.rawValue
+        if component == DatePickerComponent.month.rawValue
         {
             return monthTextColor
         }
         return yearTextColor
     }
     
-    private func selectedFontForComponent(component : Int) -> UIFont
+    fileprivate func selectedFontForComponent(_ component : Int) -> UIFont
     {
-        if component == DatePickerComponent.Month.rawValue
+        if component == DatePickerComponent.month.rawValue
         {
             return monthSelectedFont
         }
         return yearSelectedFont
     }
     
-    private func fontForComponent(component : Int) -> UIFont
+    fileprivate func fontForComponent(_ component : Int) -> UIFont
     {
-        if component == DatePickerComponent.Month.rawValue
+        if component == DatePickerComponent.month.rawValue
         {
             return monthFont
         }
         return yearFont
     }
     
-    private func titleForRow(row : Int, component : Int) -> String
+    fileprivate func titleForRow(_ row : Int, component : Int) -> String
     {
-        if component == DatePickerComponent.Month.rawValue
+        if component == DatePickerComponent.month.rawValue
         {
             return months[row % months.count]
         }

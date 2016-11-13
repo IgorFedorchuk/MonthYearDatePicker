@@ -10,8 +10,8 @@ import UIKit
 
 class ViewController: UIViewController
 {
-    @IBOutlet private var picker : DatePickerView!
-    private var pickerFromCode : CDatePickerViewEx = CDatePickerViewEx.init(frame: CGRectZero)
+    @IBOutlet fileprivate var picker : DatePickerView!
+    fileprivate var pickerFromCode : CDatePickerViewEx = CDatePickerViewEx.init(frame: CGRect.zero)
     
     override func viewDidLoad()
     {
@@ -24,7 +24,6 @@ class ViewController: UIViewController
         picker.selectToday()
         picker.selectRow(50, inComponent: 1, animated: false)
         picker.selectRow(500, inComponent: 0, animated: false)
-        picker.date
         
         var frame = picker.bounds
         frame.origin.y = picker.frame.size.height
