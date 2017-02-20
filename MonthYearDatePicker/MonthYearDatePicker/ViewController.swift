@@ -8,29 +8,55 @@
 
 import UIKit
 
-class ViewController: UIViewController
+class ViewController: UIViewController, onSelectMonthYear
 {
+
+    let dateFormatter = DateFormatter()
+    func onSelect(_ date:Date) {
+        update(date)
+    }
+    @IBAction func onYear(_ sender: Any) {
+        picker.setYearMode()
+         picker.selectToday()
+    }
+
+    @IBAction func onMonth(_ sender: Any) {
+        picker.setMonthYearMode()
+         picker.selectToday()
+    }
+    
+    func update(_ date:Date) {
+        dateFormatter.setLocalizedDateFormatFromTemplate("MMMM, YYYY")
+        lSelectedDate.text = dateFormatter.string(from: date)
+    }
+
     @IBOutlet fileprivate var picker : DatePickerView!
     fileprivate var pickerFromCode : CDatePickerViewEx = CDatePickerViewEx.init(frame: CGRect.zero)
+    
+    @IBOutlet weak var lSelectedDate: UILabel!
+
+    @IBAction func onChangedDate(_ sender: UIDatePicker) {
+        picker.date = sender.date
+        update(sender.date)
+    }
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
-        picker.minYear = 2000
-        picker.maxYear = 2020
+        picker.minYear = 1965
+        picker.maxYear = 2035
         picker.rowHeight = 60
         
         picker.selectToday()
-        picker.selectRow(50, inComponent: 1, animated: false)
-        picker.selectRow(500, inComponent: 0, animated: false)
-        
+
         var frame = picker.bounds
         frame.origin.y = picker.frame.size.height
         pickerFromCode.frame = frame
         
-        view.addSubview(pickerFromCode)
-        pickerFromCode.selectToday()
+//        view.addSubview(pickerFromCode)
+//        pickerFromCode.selectToday()
+        picker.monthYearDelegate = self
     }
 
     override func didReceiveMemoryWarning()
