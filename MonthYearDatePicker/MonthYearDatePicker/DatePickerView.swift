@@ -15,8 +15,8 @@ enum DatePickerComponent : Int
 
 class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
 {
-    fileprivate let bigRowCount = 1000
-    fileprivate let componentsCount = 2
+    private let bigRowCount = 1000
+    private let componentsCount = 2
     var minYear = 2008
     var maxYear = 2031
     var rowHeight : CGFloat = 44
@@ -33,9 +33,9 @@ class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
     var yearTextColor = UIColor.black
     var yearSelectedTextColor = UIColor.blue
         
-    fileprivate let formatter = DateFormatter.init()
+    private let formatter = DateFormatter.init()
 
-    fileprivate var rowLabel : UILabel
+    private var rowLabel : UILabel
     {
         let label = UILabel.init(frame: CGRect(x: 0, y: 0, width: componentWidth, height: rowHeight))
         label.textAlignment = .center
@@ -74,22 +74,22 @@ class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
         return formatter.string(from: Date.init())
     }
     
-    fileprivate var bigRowMonthCount : Int
+    private var bigRowMonthCount : Int
     {
         return months.count  * bigRowCount
     }
  
-    fileprivate var bigRowYearCount : Int
+    private var bigRowYearCount : Int
     {
         return years.count  * bigRowCount
     }
     
-    fileprivate var componentWidth : CGFloat
+    private var componentWidth : CGFloat
     {
         return self.bounds.size.width / CGFloat(componentsCount)
     }
     
-    fileprivate var todayIndexPath : IndexPath
+    private var todayIndexPath : IndexPath
     {
         var row = 0
         var section = 0
@@ -206,13 +206,13 @@ class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
     
     //MARK: - Private
     
-    fileprivate func loadDefaultsParameters()
+    private func loadDefaultsParameters()
     {
         delegate = self
         dataSource = self
     }
     
-    fileprivate func isSelectedRow(_ row : Int, component : Int) -> Bool
+    private func isSelectedRow(_ row : Int, component : Int) -> Bool
     {
         var selected = false
         if component == DatePickerComponent.month.rawValue
@@ -235,7 +235,7 @@ class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
         return selected
     }
     
-    fileprivate func selectedColorForComponent(_ component : Int) -> UIColor
+    private func selectedColorForComponent(_ component : Int) -> UIColor
     {
         if component == DatePickerComponent.month.rawValue
         {
@@ -244,7 +244,7 @@ class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
         return yearSelectedTextColor
     }
     
-    fileprivate func colorForComponent(_ component : Int) -> UIColor
+    private func colorForComponent(_ component : Int) -> UIColor
     {
         if component == DatePickerComponent.month.rawValue
         {
@@ -253,7 +253,7 @@ class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
         return yearTextColor
     }
     
-    fileprivate func selectedFontForComponent(_ component : Int) -> UIFont
+    private func selectedFontForComponent(_ component : Int) -> UIFont
     {
         if component == DatePickerComponent.month.rawValue
         {
@@ -262,7 +262,7 @@ class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
         return yearSelectedFont
     }
     
-    fileprivate func fontForComponent(_ component : Int) -> UIFont
+    private func fontForComponent(_ component : Int) -> UIFont
     {
         if component == DatePickerComponent.month.rawValue
         {
@@ -271,7 +271,7 @@ class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
         return yearFont
     }
     
-    fileprivate func titleForRow(_ row : Int, component : Int) -> String
+    private func titleForRow(_ row : Int, component : Int) -> String
     {
         if component == DatePickerComponent.month.rawValue
         {
