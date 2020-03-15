@@ -100,7 +100,7 @@ class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
         {
             if month == currentMonthName
             {
-                row = months.index(of: month)!
+                row = months.firstIndex(of: month)!
                 row += bigRowMonthCount / 2
                 break;
             }
@@ -110,7 +110,7 @@ class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource
         {
             if year == currentYearName
             {
-                section = years.index(of: year)!
+                section = years.firstIndex(of: year)!
                 section += bigRowYearCount / 2
                 break;
             }
