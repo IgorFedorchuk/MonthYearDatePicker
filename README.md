@@ -1,19 +1,34 @@
-MonthYearDatePicker
-===================
+It is a sublcass of UIPickerView. You can display month and year using native iOS control. 
 
-![alt tag](https://github.com/IgorFedorchuk/MonthYearDatePicker/blob/master/Screenshot.png)
+# Requirements
+- iOS 13.0
+- Xcode 15.0+
+- iPhone/iPad
+- Swift 5
 
+# Screenshots
+![Simulator Screenshot - iPhone 15 Pro - 2024-06-04 at 17 20 22](https://github.com/IgorFedorchuk/MonthYearDatePicker/assets/2764603/21dc1d1f-ecc9-46e4-9370-b159dc09606a)
 
-It is a sublcass of UIDatePicker. You can display month and year using native iOS control. Use -(void)selectToday method to setup picker to current day. Use MonthYearDatePicker from xib or create it from code.
-
-=====================
-
-MIT LICENSE
-
-Copyright (c) 2014 Igor Fedorchuk
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+# How to use
+For clearer comprehension, please open the project located in the "Example" folder.
+```
+var picker = DatePickerView(frame: view.bounds)
+picker.needRecenter = true
+picker.minYear = 2020
+picker.maxYear = 2030
+picker.rowHeight = 60
+picker.yearFont = UIFont.systemFont(ofSize: 17)
+picker.monthFont = UIFont.systemFont(ofSize: 17)
+picker.locale = Locale(identifier: "en_US")
+picker.onYearChanged = { year in
+    print("year: \(year)")
+    print("date: \(String(describing: picker.date))")
+}
+picker.onMonthChanged = { index, name in
+    print("name: \(name), index: \(index)")
+    print("date: \(String(describing: picker.date))")
+}
+view.addSubview(picker)
+picker.reloadAllComponents()
+picker.selectToday()
+```

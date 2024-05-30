@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		77C868C51CB38BA800CBF00B /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C868C41CB38BA800CBF00B /* DatePickerView.swift */; };
+		777F87A72C0F30D900F2FF8B /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777F87A52C0F30D900F2FF8B /* DatePickerView.swift */; };
 		77C868C71CB39F1B00CBF00B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C868C61CB39F1B00CBF00B /* ViewController.swift */; };
 		77C868C91CB3A4A500CBF00B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C868C81CB3A4A500CBF00B /* AppDelegate.swift */; };
 		77C868CB1CB3A88200CBF00B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77C868CA1CB3A88200CBF00B /* Main.storyboard */; };
@@ -15,15 +15,10 @@
 		780814D816F6F20900002B9B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780814D716F6F20900002B9B /* Foundation.framework */; };
 		780814DA16F6F20900002B9B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 780814D916F6F20900002B9B /* CoreGraphics.framework */; };
 		780814E016F6F20900002B9B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 780814DE16F6F20900002B9B /* InfoPlist.strings */; };
-		780814E816F6F20A00002B9B /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 780814E716F6F20900002B9B /* Default.png */; };
-		780814EA16F6F20A00002B9B /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 780814E916F6F20A00002B9B /* Default@2x.png */; };
-		780814EC16F6F20A00002B9B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 780814EB16F6F20A00002B9B /* Default-568h@2x.png */; };
-		7808151616F6F33B00002B9B /* CDatePickerViewEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 7808151516F6F33B00002B9B /* CDatePickerViewEx.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		77C868C11CB382D800CBF00B /* MonthYearDatePicker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MonthYearDatePicker-Bridging-Header.h"; sourceTree = "<group>"; };
-		77C868C41CB38BA800CBF00B /* DatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		777F87A52C0F30D900F2FF8B /* DatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		77C868C61CB39F1B00CBF00B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		77C868C81CB3A4A500CBF00B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77C868CA1CB3A88200CBF00B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -33,13 +28,7 @@
 		780814D916F6F20900002B9B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		780814DD16F6F20900002B9B /* MonthYearDatePicker-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MonthYearDatePicker-Info.plist"; sourceTree = "<group>"; };
 		780814DF16F6F20900002B9B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		780814E316F6F20900002B9B /* MonthYearDatePicker-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MonthYearDatePicker-Prefix.pch"; sourceTree = "<group>"; };
-		780814E716F6F20900002B9B /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		780814E916F6F20A00002B9B /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		780814EB16F6F20A00002B9B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		780814FC16F6F20A00002B9B /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		7808151416F6F33B00002B9B /* CDatePickerViewEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDatePickerViewEx.h; sourceTree = "<group>"; };
-		7808151516F6F33B00002B9B /* CDatePickerViewEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDatePickerViewEx.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +45,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		777F87A62C0F30D900F2FF8B /* MonthYearDatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				777F87A52C0F30D900F2FF8B /* DatePickerView.swift */,
+			);
+			name = MonthYearDatePicker;
+			path = ../../Sources/MonthYearDatePicker;
+			sourceTree = "<group>";
+		};
 		780814C916F6F20900002B9B = {
 			isa = PBXGroup;
 			children = (
@@ -87,7 +85,7 @@
 		780814DB16F6F20900002B9B /* MonthYearDatePicker */ = {
 			isa = PBXGroup;
 			children = (
-				7808151316F6F31A00002B9B /* CDatePickerViewEx */,
+				777F87A62C0F30D900F2FF8B /* MonthYearDatePicker */,
 				77C868C81CB3A4A500CBF00B /* AppDelegate.swift */,
 				77C868C61CB39F1B00CBF00B /* ViewController.swift */,
 				77C868CA1CB3A88200CBF00B /* Main.storyboard */,
@@ -101,23 +99,8 @@
 			children = (
 				780814DD16F6F20900002B9B /* MonthYearDatePicker-Info.plist */,
 				780814DE16F6F20900002B9B /* InfoPlist.strings */,
-				780814E316F6F20900002B9B /* MonthYearDatePicker-Prefix.pch */,
-				780814E716F6F20900002B9B /* Default.png */,
-				780814E916F6F20A00002B9B /* Default@2x.png */,
-				780814EB16F6F20A00002B9B /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		7808151316F6F31A00002B9B /* CDatePickerViewEx */ = {
-			isa = PBXGroup;
-			children = (
-				77C868C41CB38BA800CBF00B /* DatePickerView.swift */,
-				7808151416F6F33B00002B9B /* CDatePickerViewEx.h */,
-				7808151516F6F33B00002B9B /* CDatePickerViewEx.m */,
-				77C868C11CB382D800CBF00B /* MonthYearDatePicker-Bridging-Header.h */,
-			);
-			name = CDatePickerViewEx;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,9 +164,6 @@
 			files = (
 				77C868CB1CB3A88200CBF00B /* Main.storyboard in Resources */,
 				780814E016F6F20900002B9B /* InfoPlist.strings in Resources */,
-				780814E816F6F20A00002B9B /* Default.png in Resources */,
-				780814EA16F6F20A00002B9B /* Default@2x.png in Resources */,
-				780814EC16F6F20A00002B9B /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,10 +174,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				777F87A72C0F30D900F2FF8B /* DatePickerView.swift in Sources */,
 				77C868C91CB3A4A500CBF00B /* AppDelegate.swift in Sources */,
 				77C868C71CB39F1B00CBF00B /* ViewController.swift in Sources */,
-				77C868C51CB38BA800CBF00B /* DatePickerView.swift in Sources */,
-				7808151616F6F33B00002B9B /* CDatePickerViewEx.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,11 +297,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MonthYearDatePicker/MonthYearDatePicker-Prefix.pch";
 				INFOPLIST_FILE = "MonthYearDatePicker/MonthYearDatePicker-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "MonthYearDatePicker.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "MonthYearDatePicker/MonthYearDatePicker-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
@@ -337,11 +316,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MonthYearDatePicker/MonthYearDatePicker-Prefix.pch";
 				INFOPLIST_FILE = "MonthYearDatePicker/MonthYearDatePicker-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "MonthYearDatePicker.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "MonthYearDatePicker/MonthYearDatePicker-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = app;

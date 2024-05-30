@@ -1,0 +1,4 @@
+
+# file options
+--disable redundantReturn
+--disable wrapMultilineStatementBraces
