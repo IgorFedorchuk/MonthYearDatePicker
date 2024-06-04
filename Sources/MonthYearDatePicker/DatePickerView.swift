@@ -102,7 +102,7 @@ open class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataS
         return bounds.size.width / CGFloat(componentsCount)
     }
 
-    public override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
@@ -117,18 +117,18 @@ open class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataS
         setup()
     }
 
-    func select(monthIndex: Int) {
+    open func select(monthIndex: Int) {
         guard monthIndex < months.count else {
             return
         }
         selectToday(items: months, currentItem: months[monthIndex], component: DatePickerComponent.month.rawValue)
     }
 
-    func select(year: Int) {
+    open func select(year: Int) {
         selectToday(items: years, currentItem: String(year), component: DatePickerComponent.year.rawValue)
     }
 
-    func selectToday() {
+    open func selectToday() {
         selectToday(items: months, currentItem: currentMonthName, component: DatePickerComponent.month.rawValue)
         selectToday(items: years, currentItem: currentYearName, component: DatePickerComponent.year.rawValue)
     }
