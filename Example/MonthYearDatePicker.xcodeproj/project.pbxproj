@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		777F87A72C0F30D900F2FF8B /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 777F87A52C0F30D900F2FF8B /* DatePickerView.swift */; };
+		77B115CB2C10523800EC4EFF /* DatePickerMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B115CA2C10523800EC4EFF /* DatePickerMode.swift */; };
+		77B115CD2C10524D00EC4EFF /* DatePickerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B115CC2C10524D00EC4EFF /* DatePickerComponent.swift */; };
 		77C868C71CB39F1B00CBF00B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C868C61CB39F1B00CBF00B /* ViewController.swift */; };
 		77C868C91CB3A4A500CBF00B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77C868C81CB3A4A500CBF00B /* AppDelegate.swift */; };
 		77C868CB1CB3A88200CBF00B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 77C868CA1CB3A88200CBF00B /* Main.storyboard */; };
@@ -19,6 +21,8 @@
 
 /* Begin PBXFileReference section */
 		777F87A52C0F30D900F2FF8B /* DatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		77B115CA2C10523800EC4EFF /* DatePickerMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerMode.swift; sourceTree = "<group>"; };
+		77B115CC2C10524D00EC4EFF /* DatePickerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerComponent.swift; sourceTree = "<group>"; };
 		77C868C61CB39F1B00CBF00B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		77C868C81CB3A4A500CBF00B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		77C868CA1CB3A88200CBF00B /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -49,6 +53,8 @@
 			isa = PBXGroup;
 			children = (
 				777F87A52C0F30D900F2FF8B /* DatePickerView.swift */,
+				77B115CA2C10523800EC4EFF /* DatePickerMode.swift */,
+				77B115CC2C10524D00EC4EFF /* DatePickerComponent.swift */,
 			);
 			name = MonthYearDatePicker;
 			path = ../../Sources/MonthYearDatePicker;
@@ -174,6 +180,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77B115CB2C10523800EC4EFF /* DatePickerMode.swift in Sources */,
+				77B115CD2C10524D00EC4EFF /* DatePickerComponent.swift in Sources */,
 				777F87A72C0F30D900F2FF8B /* DatePickerView.swift in Sources */,
 				77C868C91CB3A4A500CBF00B /* AppDelegate.swift in Sources */,
 				77C868C71CB39F1B00CBF00B /* ViewController.swift in Sources */,

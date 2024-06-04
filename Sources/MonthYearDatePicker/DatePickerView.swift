@@ -8,24 +8,12 @@
 
 import UIKit
 
-public enum DatePickerComponent: CaseIterable {
-    case month, year
-
-    var rawValue: Int {
-        switch self {
-        case .month:
-            return 0
-        case .year:
-            return 1
-        }
-    }
-}
-
 open class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataSource {
-    open var minYear = 2008
-    open var maxYear = 2031
+    open var minYear = 2000
+    open var maxYear = 2030
     open var rowHeight: CGFloat = 44
     open var needRecenter = false
+    open var mode = DatePickerMode.mothAndYear
 
     open var monthFont = UIFont.boldSystemFont(ofSize: 17)
     open var monthSelectedFont = UIFont.boldSystemFont(ofSize: 17)
@@ -75,9 +63,12 @@ open class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataS
         return String(year)
     }
 
-    open var date: Date {
-        let month = months[selectedRow(inComponent: DatePickerComponent.month.rawValue) % months.count]
-        let year = years[selectedRow(inComponent: DatePickerComponent.year.rawValue) % years.count]
+    open var date: Date? {
+        guard mode == .mothAndYear else {
+            return nil
+        }
+        let month = months[selectedRow(inComponent: DatePickerComponent.month.component(mode: mode)) % months.count]
+        let year = years[selectedRow(inComponent: DatePickerComponent.year.component(mode: mode)) % years.count]
 
         let formatter = DateFormatter()
         formatter.locale = locale
@@ -88,7 +79,14 @@ open class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataS
     }
 
     private let numberOfRows = 100_000
-    private let componentsCount = DatePickerComponent.allCases.count
+    private var componentsCount: Int {
+        switch mode {
+        case .mothAndYear:
+            return 2
+        default:
+            return 1
+        }
+    }
 
     private var rowLabel: UILabel {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: componentWidth, height: rowHeight))
@@ -118,19 +116,30 @@ open class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataS
     }
 
     open func select(monthIndex: Int) {
-        guard monthIndex < months.count else {
+        guard mode != .year, monthIndex < months.count else {
             return
         }
-        selectToday(items: months, currentItem: months[monthIndex], component: DatePickerComponent.month.rawValue)
+
+        select(items: months, currentItem: months[monthIndex], component: DatePickerComponent.month.component(mode: mode))
     }
 
     open func select(year: Int) {
-        selectToday(items: years, currentItem: String(year), component: DatePickerComponent.year.rawValue)
+        guard mode != .month else {
+            return
+        }
+        select(items: years, currentItem: String(year), component: DatePickerComponent.year.component(mode: mode))
     }
 
     open func selectToday() {
-        selectToday(items: months, currentItem: currentMonthName, component: DatePickerComponent.month.rawValue)
-        selectToday(items: years, currentItem: currentYearName, component: DatePickerComponent.year.rawValue)
+        switch mode {
+        case .month:
+            select(items: months, currentItem: currentMonthName, component: DatePickerComponent.month.component(mode: mode))
+        case .year:
+            select(items: years, currentItem: currentYearName, component: DatePickerComponent.year.component(mode: mode))
+        case .mothAndYear:
+            select(items: months, currentItem: currentMonthName, component: DatePickerComponent.month.component(mode: mode))
+            select(items: years, currentItem: currentYearName, component: DatePickerComponent.year.component(mode: mode))
+        }
     }
 }
 
@@ -152,10 +161,17 @@ extension DatePickerView {
         label.textColor = selected ? selectedColor(component: component) : color(component: component)
         label.text = title(row: row, component: component)
 
-        if component == DatePickerComponent.month.rawValue {
+        switch mode {
+        case .month:
             onMonthLabelCreated?(label)
-        } else {
+        case .year:
             onYearLabelCreated?(label)
+        case .mothAndYear:
+            if component == DatePickerComponent.month.component(mode: mode) {
+                onMonthLabelCreated?(label)
+            } else {
+                onYearLabelCreated?(label)
+            }
         }
         return label
     }
@@ -173,33 +189,60 @@ extension DatePickerView {
     }
 
     open func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        let middleRow: Int
-        if component == DatePickerComponent.month.rawValue {
-            let dataIndex = row % months.count
-            middleRow = (numberOfRows / 2) - ((numberOfRows / 2) % months.count) + dataIndex
-        } else {
-            let dataIndex = row % years.count
-            middleRow = (numberOfRows / 2) - ((numberOfRows / 2) % years.count) + dataIndex
-        }
-
+        let middleRow = middleRow(row, component: component)
         // Optional: Re-center the picker view to avoid reaching high row numbers
         if needRecenter, row != middleRow {
             pickerView.selectRow(middleRow, inComponent: component, animated: false)
         }
-        if component == DatePickerComponent.month.rawValue {
-            let dataIndex = row % months.count
-            onMonthChanged?(dataIndex, months[dataIndex])
-        } else {
-            let dataIndex = row % years.count
-            if let year = Int(years[dataIndex]) {
-                onYearChanged?(year)
-            }
-        }
+
+        rowDidSelect(row, component: component)
     }
 }
 
 extension DatePickerView {
-    private func selectToday(items: [String], currentItem: String, component: Int) {
+    private func middleRow(_ row: Int, component: Int) -> Int {
+        switch mode {
+        case .month:
+            let dataIndex = row % months.count
+            return (numberOfRows / 2) - ((numberOfRows / 2) % months.count) + dataIndex
+        case .year:
+            let dataIndex = row % years.count
+            return (numberOfRows / 2) - ((numberOfRows / 2) % years.count) + dataIndex
+        case .mothAndYear:
+            if component == DatePickerComponent.month.component(mode: mode) {
+                let dataIndex = row % months.count
+                return (numberOfRows / 2) - ((numberOfRows / 2) % months.count) + dataIndex
+            } else {
+                let dataIndex = row % years.count
+                return (numberOfRows / 2) - ((numberOfRows / 2) % years.count) + dataIndex
+            }
+        }
+    }
+
+    private func rowDidSelect(_ row: Int, component: Int) {
+        switch mode {
+        case .month:
+            let dataIndex = row % months.count
+            onMonthChanged?(dataIndex, months[dataIndex])
+        case .year:
+            let dataIndex = row % years.count
+            if let year = Int(years[dataIndex]) {
+                onYearChanged?(year)
+            }
+        case .mothAndYear:
+            if component == DatePickerComponent.month.component(mode: mode) {
+                let dataIndex = row % months.count
+                onMonthChanged?(dataIndex, months[dataIndex])
+            } else {
+                let dataIndex = row % years.count
+                if let year = Int(years[dataIndex]) {
+                    onYearChanged?(year)
+                }
+            }
+        }
+    }
+
+    private func select(items: [String], currentItem: String, component: Int) {
         let row = items.firstIndex { item in
             item == currentItem
         }
@@ -228,39 +271,76 @@ extension DatePickerView {
     }
 
     private func isSelected(row: Int, component: Int) -> Bool {
-        var selected = false
-        if component == DatePickerComponent.month.rawValue {
+        switch mode {
+        case .mothAndYear:
+            if component == DatePickerComponent.month.component(mode: mode) {
+                let name = months[row % months.count]
+                return name == currentMonthName
+            } else {
+                let name = years[row % years.count]
+                return name == currentYearName
+            }
+        case .month:
             let name = months[row % months.count]
-            if name == currentMonthName {
-                selected = true
-            }
-        } else {
+            return name == currentMonthName
+        case .year:
             let name = years[row % years.count]
-            if name == currentYearName {
-                selected = true
-            }
+            return name == currentYearName
         }
-
-        return selected
     }
 
     private func selectedColor(component: Int) -> UIColor {
-        return component == DatePickerComponent.month.rawValue ? monthSelectedTextColor : yearSelectedTextColor
+        switch mode {
+        case .mothAndYear:
+            return component == DatePickerComponent.month.component(mode: mode) ? monthSelectedTextColor : yearSelectedTextColor
+        case .month:
+            return monthSelectedTextColor
+        case .year:
+            return yearSelectedTextColor
+        }
     }
 
     private func color(component: Int) -> UIColor {
-        return component == DatePickerComponent.month.rawValue ? monthTextColor : yearTextColor
+        switch mode {
+        case .mothAndYear:
+            return component == DatePickerComponent.month.component(mode: mode) ? monthTextColor : yearTextColor
+        case .month:
+            return monthTextColor
+        case .year:
+            return yearTextColor
+        }
     }
 
     private func selectedFont(component: Int) -> UIFont {
-        return component == DatePickerComponent.month.rawValue ? monthSelectedFont : yearSelectedFont
+        switch mode {
+        case .mothAndYear:
+            return component == DatePickerComponent.month.component(mode: mode) ? monthSelectedFont : yearSelectedFont
+        case .month:
+            return monthSelectedFont
+        case .year:
+            return yearSelectedFont
+        }
     }
 
     private func font(component: Int) -> UIFont {
-        return component == DatePickerComponent.month.rawValue ? monthFont : yearFont
+        switch mode {
+        case .mothAndYear:
+            return component == DatePickerComponent.month.component(mode: mode) ? monthFont : yearFont
+        case .month:
+            return monthFont
+        case .year:
+            return yearFont
+        }
     }
 
     private func title(row: Int, component: Int) -> String {
-        return component == DatePickerComponent.month.rawValue ? months[row % months.count] : years[row % years.count]
+        switch mode {
+        case .mothAndYear:
+            return component == DatePickerComponent.month.component(mode: mode) ? months[row % months.count] : years[row % years.count]
+        case .month:
+            return months[row % months.count]
+        case .year:
+            return years[row % years.count]
+        }
     }
 }
