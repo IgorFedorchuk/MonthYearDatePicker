@@ -102,7 +102,7 @@ open class DatePickerView: UIPickerView, UIPickerViewDelegate, UIPickerViewDataS
         return bounds.size.width / CGFloat(componentsCount)
     }
 
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
