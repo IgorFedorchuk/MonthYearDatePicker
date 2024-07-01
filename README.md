@@ -1,5 +1,8 @@
 It is a sublcass of UIPickerView. You can display month and year using native iOS control. 
 
+# Install via Swift Package Manager
+You can use Swift Package Manager to add MonthYearDatePicker to your Xcode project. Select File » Add Packages Dependencies... and enter the repository URL https://github.com/IgorFedorchuk/MonthYearDatePicker.git into the search bar (top right).
+
 # Requirements
 - iOS 13.0
 - Xcode 15.0+
